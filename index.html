@@ -676,6 +676,82 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ── BANTER TICKER ── */
+  .banter-scroll {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+    padding: 0.8rem 0;
+    position: relative;
+  }
+  .banter-scroll::before, .banter-scroll::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .banter-scroll::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .banter-scroll::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+  .banter-track {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    animation: ticker 35s linear infinite;
+  }
+  .banter-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .banter-item .hi { color: var(--pink); }
+  .banter-item .num { color: var(--cyan); font-weight: 700; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── 30 SECTION ── */
+  .thirty-section {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .thirty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .thirty-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    text-align: left;
+  }
+  .thirty-card.visible { opacity: 1; transform: translateY(0); }
+  .thirty-card .tc-title { color: var(--white); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8rem; }
+  .thirty-card .tc-emoji { font-size: 1.4rem; margin-bottom: 0.5rem; display: block; }
+  .thirty-card .tc-tag { display: inline-block; margin-top: 0.6rem; }
+
+  @media (max-width: 600px) {
+    .thirty-grid { grid-template-columns: 1fr 1fr; }
+  }
+
   @media (max-width: 600px) {
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .gallery-frame:nth-child(2), .gallery-frame:nth-child(5) { margin-top: 0; }
@@ -699,22 +775,24 @@
     <div class="terminal-title">birthday_bash.sh — running</div>
   </div>
   <div class="terminal-box">
-    <div><span class="t-green">$</span> <span class="t-cyan">./celebrate.sh</span> <span class="t-yellow">--person="my_wife"</span> <span class="t-violet">--mode="birthday"</span></div>
+    <div><span class="t-green">$</span> <span class="t-cyan">./celebrate.sh</span> <span class="t-yellow">--person="my_wife"</span> <span class="t-violet">--age=30</span> <span class="t-yellow">--year=2026</span></div>
     <div class="t-muted">Initializing birthday sequence... 🎂</div>
+    <div><span class="t-green">✓</span> Age:            <span class="t-pink">30</span> <span class="t-muted"># deprecated value, she looks 21</span></div>
     <div><span class="t-green">✓</span> Love:           <span class="t-pink">INFINITE</span></div>
     <div><span class="t-green">✓</span> Bugs fixed:     <span class="t-cyan">ALL (by her)</span></div>
     <div><span class="t-green">✓</span> Tests passed:   <span class="t-green">100%</span></div>
-    <div><span class="t-green">✓</span> Status:         <span class="t-yellow">CELEBRATING 🎉</span></div>
-    <div class="t-muted">Build successful. Happy Birthday!</div>
+    <div><span class="t-yellow">⚠</span> WARNING:        <span class="t-yellow">30 candles detected — fire hazard possible</span></div>
+    <div><span class="t-green">✓</span> Status:         <span class="t-yellow">THRIVING AT 30 🎉</span></div>
+    <div class="t-muted">Build successful. She's a legend.</div>
   </div>
 
-  <h1 class="hero-title">Happy Birthday,<br>My Love</h1>
+  <h1 class="hero-title">Turning 30,<br>Still Flawless</h1>
 
   <div class="hero-badges">
     <span class="badge badge-pass">✓ TESTS PASSING</span>
-    <span class="badge badge-build">⚡ BUILD SUCCESSFUL</span>
+    <span class="badge badge-build">⚡ 30 YEARS STRONG</span>
     <span class="badge badge-love">♡ LOVED FOREVER</span>
-    <span class="badge badge-ver">v.birthday.2025</span>
+    <span class="badge badge-ver">v30.0.0 — 2026</span>
   </div>
 
   <div class="scroll-hint">
@@ -725,27 +803,82 @@
 
 <!-- ═══ STATS ═══ -->
 <section id="stats">
-  <span class="section-label">metrics that matter</span>
-  <h2 class="section-title" style="background: linear-gradient(135deg,#a855f7,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Her Quality Report</h2>
+  <span class="section-label">v30.0.0 — release notes — 2026</span>
+  <h2 class="section-title" style="background: linear-gradient(135deg,#a855f7,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">30 Years of Flawless Releases</h2>
+  <p style="color:var(--muted); font-size:0.85rem; font-family:'Space Mono',monospace; margin-bottom:2.5rem; text-align:center;">
+    <span style="color:var(--green)">// She shipped 30 versions and every single one was better than the last.</span>
+  </p>
   <div class="stats-row">
     <div class="stat-card reveal" style="transition-delay:0.1s">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Test Coverage</div>
+      <div class="stat-num">30</div>
+      <div class="stat-label">Years of Awesomeness</div>
     </div>
     <div class="stat-card reveal" style="transition-delay:0.2s">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Bugs Missed</div>
+      <div class="stat-num">10,950</div>
+      <div class="stat-label">Days of Looking Great</div>
     </div>
     <div class="stat-card reveal" style="transition-delay:0.3s">
-      <div class="stat-num">∞</div>
-      <div class="stat-label">Love Delivered</div>
+      <div class="stat-num">0</div>
+      <div class="stat-label">Signs of Aging (verified)</div>
     </div>
     <div class="stat-card reveal" style="transition-delay:0.4s">
       <div class="stat-num">★★★★★</div>
       <div class="stat-label">Wife Rating</div>
     </div>
   </div>
+  <div class="banter-scroll reveal" style="transition-delay:0.5s; margin-top:1.5rem;">
+    <div class="banter-track" id="banter-track"></div>
+  </div>
 </section>
+
+<div class="sep"><div class="sep-line"><div class="sep-rule"></div><div class="sep-icon">/* thirty.js */</div><div class="sep-rule"></div></div></div>
+
+<!-- ═══ 30 BANTER ═══ -->
+<div class="thirty-section">
+  <span class="section-label">MILESTONE RELEASE — v30.0.0</span>
+  <h2 class="section-title" style="color:var(--yellow);">Things That Are Also 30 in 2026</h2>
+  <p style="color:var(--muted); font-size:0.9rem; max-width:500px; margin: 0 auto 0.5rem;">
+    <span style="font-family:'Space Mono',monospace; color:var(--green)">// Context for the occasion</span>
+  </p>
+  <div class="thirty-grid">
+    <div class="thirty-card reveal" style="transition-delay:0.1s">
+      <span class="tc-emoji">📱</span>
+      <div class="tc-title">The World Wide Web</div>
+      Also old. Not nearly as elegant as you.
+      <div class="tc-tag"><span class="tag tag-medium">DEPRECATED</span></div>
+    </div>
+    <div class="thirty-card reveal" style="transition-delay:0.2s">
+      <span class="tc-emoji">🍷</span>
+      <div class="tc-title">A 1996 Bordeaux</div>
+      Gets more complex and valuable with age. Just like you.
+      <div class="tc-tag"><span class="tag tag-fixed">EXCELLENT VINTAGE</span></div>
+    </div>
+    <div class="thirty-card reveal" style="transition-delay:0.3s">
+      <span class="tc-emoji">🧀</span>
+      <div class="tc-title">A Fancy Aged Cheese</div>
+      Also 30. Also gets better with time. The comparison stops there, I promise.
+      <div class="tc-tag"><span class="tag tag-low">UNRELATED</span></div>
+    </div>
+    <div class="thirty-card reveal" style="transition-delay:0.4s">
+      <span class="tc-emoji">🏛️</span>
+      <div class="tc-title">The Hubble Telescope</div>
+      Has seen incredible things for 30 years. You've seen my terrible jokes for far fewer. You win.
+      <div class="tc-tag"><span class="tag tag-wont">LEGENDARY</span></div>
+    </div>
+    <div class="thirty-card reveal" style="transition-delay:0.5s">
+      <span class="tc-emoji">🎮</span>
+      <div class="tc-title">The PlayStation</div>
+      30 years old, still being tested by people. Coincidence? She'd find the bugs faster.
+      <div class="tc-tag"><span class="tag tag-critical">SHE'D WIN</span></div>
+    </div>
+    <div class="thirty-card reveal" style="transition-delay:0.6s">
+      <span class="tc-emoji">✨</span>
+      <div class="tc-title">My Love For You</div>
+      Actually infinite. But the 30-year highlight reel is spectacular.
+      <div class="tc-tag"><span class="tag tag-fixed">VERIFIED ♡</span></div>
+    </div>
+  </div>
+</div>
 
 <div class="sep"><div class="sep-line"><div class="sep-rule"></div><div class="sep-icon">/* love.css */</div><div class="sep-rule"></div></div></div>
 
@@ -755,14 +888,14 @@
   <h2 class="section-title" style="color:var(--pink);">A Letter For You</h2>
   <div class="color-rule" style="margin: 0 auto 2.5rem;"></div>
   <div class="letter-card reveal">
-    <div class="letter-tag">/* written with love, no bugs guaranteed */</div>
+    <div class="letter-tag">/* written with love, zero bugs, 30 candles */</div>
     <p class="letter-text">
       My darling,<br><br>
-      On this special day, I find myself at a loss for words — which, if you know me, is quite the miracle.<br><br>
+      You are now officially 30. Thirty! Three decades. 10,950 days. And somehow, <em>still</em> the most beautiful person I have ever seen. I suspect you've found a bug in the ageing algorithm and quietly reported it — Fixed: Won't Apply To Her.<br><br>
       You are the most thorough person I know — in your work, and in the way you love. You find what others miss, you fix what others ignore, and you make everything around you better just by being there.<br><br>
-      Every morning I wake up beside you is a gift I never take for granted. You bring warmth to every room, laughter to every ordinary moment, and meaning to everything in between.<br><br>
-      Today is yours. Every candle, every smile, every quiet moment of joy — all of it belongs to you. You deserve a thousand celebrations, and this is just the beginning.<br><br>
-      I love you more than words can hold.
+      Yes, you're 30 now. The good news? Wine gets better with age. So do you. The bad news? I'm legally required to remind you of this every single year from now on.<br><br>
+      Today is yours. Every candle (all 30 of them — please don't set off the fire alarm), every smile, every quiet moment of joy — all of it belongs to you. You deserve a thousand celebrations, and this is just the beginning.<br><br>
+      I love you more than words can hold — and more than the number of bugs you've ever filed (which is saying a lot).
     </p>
     <p class="letter-sign">— Forever yours ♡</p>
   </div>
@@ -777,28 +910,28 @@
   <p style="color:var(--muted); font-size:0.95rem; max-width:500px; margin:0 auto;">A few chapters from the beautiful story we are writing together.</p>
   <div class="gallery-grid">
     <div class="gallery-frame reveal" style="transition-delay:0.1s">
-      <div class="frame-emoji">🌅</div>
-      <div class="frame-caption">The beginning — the first hello that changed everything</div>
+      <img src="photo1.jpg" alt="Memory 1" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">The beginning — the first hello that changed everything</div>
     </div>
     <div class="gallery-frame reveal" style="transition-delay:0.2s">
-      <div class="frame-emoji">🌍</div>
-      <div class="frame-caption">Adventures near and far, hand in hand</div>
+      <img src="photo2.jpg" alt="Memory 2" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">Adventures near and far, hand in hand</div>
     </div>
     <div class="gallery-frame reveal" style="transition-delay:0.3s">
-      <div class="frame-emoji">💛</div>
-      <div class="frame-caption">Quiet evenings that became our favourite memories</div>
+      <img src="photo3.jpg" alt="Memory 3" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">Quiet evenings that became our favourite memories</div>
     </div>
     <div class="gallery-frame reveal" style="transition-delay:0.4s">
-      <div class="frame-emoji">🎉</div>
-      <div class="frame-caption">Celebrations big and small, always together</div>
+      <img src="photo4.jpg" alt="Memory 4" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">Celebrations big and small, always together</div>
     </div>
     <div class="gallery-frame reveal" style="transition-delay:0.5s">
-      <div class="frame-emoji">🌸</div>
-      <div class="frame-caption">The everyday beauty of a life built with you</div>
+      <img src="photo5.jpg" alt="Memory 5" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">The everyday beauty of a life built with you</div>
     </div>
     <div class="gallery-frame reveal" style="transition-delay:0.6s">
-      <div class="frame-emoji">✨</div>
-      <div class="frame-caption">All the chapters still to come — I can't wait</div>
+      <img src="photo6.jpg" alt="Memory 6" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">All the chapters still to come — I can't wait</div>
     </div>
   </div>
   <p class="upload-hint">// <span>replace emojis with your own photos</span> — see instructions above</p>
@@ -810,7 +943,7 @@
 <section id="bugreport">
   <span class="section-label">quality assurance</span>
   <h2 class="section-title" style="background: linear-gradient(135deg,#f59e0b,#ef4444); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Love Bug Report</h2>
-  <p style="color:var(--muted); font-size:0.95rem; margin-bottom:2rem;">A few known issues filed against my heart — all caused by her.</p>
+  <p style="color:var(--muted); font-size:0.95rem; margin-bottom:2rem;">Known issues filed against my heart — all caused by her. Updated for v30.0.0.</p>
   <table class="bug-table reveal">
     <thead>
       <tr>
@@ -831,31 +964,45 @@
       </tr>
       <tr>
         <td>#002</td>
-        <td>Cannot stop smiling when she laughs</td>
+        <td>She turned 30 but the beauty counter didn't increment</td>
         <td><span class="tag tag-medium">MEDIUM</span></td>
-        <td><span class="tag tag-wont">WON'T FIX</span></td>
-        <td>A feature, not a bug</td>
+        <td><span class="tag tag-fixed">VERIFIED</span></td>
+        <td>Expected behaviour — she's timeless</td>
       </tr>
       <tr>
         <td>#003</td>
-        <td>Memory floods with her whenever I'm apart</td>
+        <td>30 candles melted the cake before photo was taken</td>
         <td><span class="tag tag-critical">CRITICAL</span></td>
         <td><span class="tag tag-wont">WON'T FIX</span></td>
-        <td>By design ♡</td>
+        <td>Fire dept on standby next year</td>
       </tr>
       <tr>
         <td>#004</td>
-        <td>Everything tastes better when she cooks</td>
+        <td>Cannot stop smiling when she laughs</td>
         <td><span class="tag tag-low">LOW</span></td>
-        <td><span class="tag tag-fixed">VERIFIED</span></td>
-        <td>Reproducible 100%</td>
+        <td><span class="tag tag-wont">WON'T FIX</span></td>
+        <td>A feature, not a bug ♡</td>
       </tr>
       <tr>
         <td>#005</td>
+        <td>She claims 30 is "just a number" — data disagrees</td>
+        <td><span class="tag tag-medium">MEDIUM</span></td>
+        <td><span class="tag tag-fixed">CLOSED</span></td>
+        <td>She's right. 30 is fabulous.</td>
+      </tr>
+      <tr>
+        <td>#006</td>
         <td>Time passes too fast when we're together</td>
         <td><span class="tag tag-critical">CRITICAL</span></td>
         <td><span class="tag tag-wont">WON'T FIX</span></td>
         <td>Needs more time together</td>
+      </tr>
+      <tr>
+        <td>#007</td>
+        <td>She finds bugs faster at 30 than ever before</td>
+        <td><span class="tag tag-low">LOW</span></td>
+        <td><span class="tag tag-fixed">VERIFIED</span></td>
+        <td>Peak performance unlocked 🚀</td>
       </tr>
     </tbody>
   </table>
@@ -890,10 +1037,16 @@
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <span class="footer-heart">🧪</span>
+  <span class="footer-heart">🎂</span>
   <div class="footer-code" style="margin-top:1.5rem;">
-    <div><span class="t-green">const</span> wife = { <span class="t-pink">amazing</span>: <span class="t-cyan">true</span>, <span class="t-pink">loved</span>: <span class="t-cyan">always</span> };</div>
-    <div><span class="t-green">console</span>.<span class="t-cyan">log</span>(<span class="t-pink">"Happy Birthday — you're the best bug finder and the best human I know."</span>);</div>
+    <div><span class="t-green">const</span> wife = {</div>
+    <div>&nbsp;&nbsp;<span class="t-pink">age</span>: <span class="t-cyan">30</span>, <span class="t-muted">// incredible</span></div>
+    <div>&nbsp;&nbsp;<span class="t-pink">looksLike</span>: <span class="t-cyan">21</span>, <span class="t-muted">// unexplained phenomenon</span></div>
+    <div>&nbsp;&nbsp;<span class="t-pink">bugsFound</span>: <span class="t-cyan">all_of_them</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-pink">loved</span>: <span class="t-cyan">always</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-pink">celebrated</span>: <span class="t-cyan">forever</span></div>
+    <div>};</div>
+    <div style="margin-top:0.8rem;"><span class="t-green">console</span>.<span class="t-cyan">log</span>(<span class="t-pink">"Happy 30th — you're the best release of 2026. 🥂"</span>);</div>
     <div style="margin-top:0.5rem; color: var(--violet);">// ♡ Forever yours</div>
   </div>
 </footer>
@@ -1015,6 +1168,29 @@
   }
 
   loadQuestion();
+
+  // ── BANTER TICKER ──
+  const banters = [
+    '🎂 30 years old • still looks 21 • suspicious',
+    '🧪 30 candles • 1 fire extinguisher • standard procedure',
+    '✨ age: 30 • vibes: immaculate • bugs found: all of them',
+    '🍷 like fine wine • gets better every year • verified',
+    '🎉 v30.0.0 released • zero known defects • flawless build',
+    '💜 30 trips around the sun • still the brightest star',
+    '🔥 30 candles • please stand back • she is lit',
+    '🚀 entering her 30s • peak performance unlocked',
+    '📋 30 years • 10950 days • 0 bad hair days (unconfirmed)',
+    '🧁 30 is just 18 with 12 years of QA experience',
+  ];
+  const track = document.getElementById('banter-track');
+  if (track) {
+    [...banters, ...banters].forEach(b => {
+      const el = document.createElement('span');
+      el.className = 'banter-item';
+      el.textContent = b + '     ';
+      track.appendChild(el);
+    });
+  }
 </script>
 </body>
 </html>
