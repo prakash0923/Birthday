@@ -366,46 +366,95 @@
   .gallery-frame {
     aspect-ratio: 3/4;
     border-radius: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    perspective: 1000px;
+  }
+  .gallery-frame.visible { opacity: 1; transform: translateY(0); }
+  .gallery-frame:nth-child(2) { margin-top: 1.5rem; }
+  .gallery-frame:nth-child(5) { margin-top: -1.5rem; }
+
+  .frame-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+  }
+  .gallery-frame.flipped .frame-inner { transform: rotateY(180deg); }
+
+  .frame-front, .frame-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
     border: 1px solid var(--border);
+  }
+
+  /* FRONT — caption / default state */
+  .frame-front {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    opacity: 0;
-    transform: translateY(30px);
+    padding: 1.2rem;
   }
-  .gallery-frame.visible { opacity: 1; transform: translateY(0); }
-  .gallery-frame:hover { transform: scale(1.04) translateY(-4px); }
-  .gallery-frame:nth-child(2) { margin-top: 1.5rem; }
-  .gallery-frame:nth-child(5) { margin-top: -1.5rem; }
+  .gallery-frame:nth-child(1) .frame-front { background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.12)); border-color: rgba(124,58,237,0.4); }
+  .gallery-frame:nth-child(2) .frame-front { background: linear-gradient(135deg, rgba(236,72,153,0.25), rgba(249,115,22,0.12)); border-color: rgba(236,72,153,0.4); }
+  .gallery-frame:nth-child(3) .frame-front { background: linear-gradient(135deg, rgba(6,182,212,0.25), rgba(16,185,129,0.12)); border-color: rgba(6,182,212,0.4); }
+  .gallery-frame:nth-child(4) .frame-front { background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(6,182,212,0.12)); border-color: rgba(16,185,129,0.4); }
+  .gallery-frame:nth-child(5) .frame-front { background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(239,68,68,0.12)); border-color: rgba(245,158,11,0.4); }
+  .gallery-frame:nth-child(6) .frame-front { background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(236,72,153,0.12)); border-color: rgba(168,85,247,0.4); }
 
-  .gallery-frame:nth-child(1) { background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(168,85,247,0.1)); border-color: rgba(124,58,237,0.4); }
-  .gallery-frame:nth-child(1):hover { box-shadow: 0 8px 40px rgba(124,58,237,0.3); }
-  .gallery-frame:nth-child(2) { background: linear-gradient(135deg, rgba(236,72,153,0.2), rgba(249,115,22,0.1)); border-color: rgba(236,72,153,0.4); }
-  .gallery-frame:nth-child(2):hover { box-shadow: 0 8px 40px rgba(236,72,153,0.3); }
-  .gallery-frame:nth-child(3) { background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(16,185,129,0.1)); border-color: rgba(6,182,212,0.4); }
-  .gallery-frame:nth-child(3):hover { box-shadow: 0 8px 40px rgba(6,182,212,0.3); }
-  .gallery-frame:nth-child(4) { background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.1)); border-color: rgba(16,185,129,0.4); }
-  .gallery-frame:nth-child(4):hover { box-shadow: 0 8px 40px rgba(16,185,129,0.3); }
-  .gallery-frame:nth-child(5) { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.1)); border-color: rgba(245,158,11,0.4); }
-  .gallery-frame:nth-child(5):hover { box-shadow: 0 8px 40px rgba(245,158,11,0.3); }
-  .gallery-frame:nth-child(6) { background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(236,72,153,0.1)); border-color: rgba(168,85,247,0.4); }
-  .gallery-frame:nth-child(6):hover { box-shadow: 0 8px 40px rgba(168,85,247,0.3); }
-
-  .frame-emoji { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .frame-tap-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .frame-icon { font-size: 2rem; margin-bottom: 0.8rem; }
   .frame-caption {
     font-size: 0.85rem;
-    color: rgba(248,250,252,0.8);
+    color: rgba(248,250,252,0.9);
     text-align: center;
-    padding: 0 1rem;
-    line-height: 1.5;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
+    line-height: 1.6;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
   }
+
+  /* BACK — photo */
+  .frame-back {
+    transform: rotateY(180deg);
+    background: #111;
+  }
+  .frame-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+  }
+  .frame-back .back-hint {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.65));
+    padding: 1.2rem 0.8rem 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.1em;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+  }
+
   .upload-hint {
     margin-top: 2rem;
     font-family: 'Space Mono', monospace;
@@ -909,29 +958,83 @@
   <h2 class="section-title" style="color:var(--cyan);">Moments in Time</h2>
   <p style="color:var(--muted); font-size:0.95rem; max-width:500px; margin:0 auto;">A few chapters from the beautiful story we are writing together.</p>
   <div class="gallery-grid">
-    <div class="gallery-frame reveal" style="transition-delay:0.1s">
-      <img src="photo1.jpeg" alt="Memory 1" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">The beginning — the first hello that changed everything</div>
+    <div class="gallery-frame reveal" style="transition-delay:0.1s" onclick="flipCard(this)">
+      <div class="frame-inner">
+        <div class="frame-front">
+          <div class="frame-tap-hint">tap to reveal</div>
+          <div class="frame-icon">🌅</div>
+          <div class="frame-caption">The beginning — the first hello that changed everything</div>
+        </div>
+        <div class="frame-back">
+          <img src="photo1.jpg" alt="Memory 1">
+          <div class="back-hint">tap again to flip back</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-frame reveal" style="transition-delay:0.2s">
-      <img src="photo2.jpg" alt="Memory 2" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">Adventures near and far, hand in hand</div>
+    <div class="gallery-frame reveal" style="transition-delay:0.2s" onclick="flipCard(this)">
+      <div class="frame-inner">
+        <div class="frame-front">
+          <div class="frame-tap-hint">tap to reveal</div>
+          <div class="frame-icon">🌍</div>
+          <div class="frame-caption">Adventures near and far, hand in hand</div>
+        </div>
+        <div class="frame-back">
+          <img src="photo2.jpg" alt="Memory 2">
+          <div class="back-hint">tap again to flip back</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-frame reveal" style="transition-delay:0.3s">
-      <img src="photo3.jpg" alt="Memory 3" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">Quiet evenings that became our favourite memories</div>
+    <div class="gallery-frame reveal" style="transition-delay:0.3s" onclick="flipCard(this)">
+      <div class="frame-inner">
+        <div class="frame-front">
+          <div class="frame-tap-hint">tap to reveal</div>
+          <div class="frame-icon">💛</div>
+          <div class="frame-caption">Quiet evenings that became our favourite memories</div>
+        </div>
+        <div class="frame-back">
+          <img src="photo3.jpg" alt="Memory 3">
+          <div class="back-hint">tap again to flip back</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-frame reveal" style="transition-delay:0.4s">
-      <img src="photo4.jpg" alt="Memory 4" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">Celebrations big and small, always together</div>
+    <div class="gallery-frame reveal" style="transition-delay:0.4s" onclick="flipCard(this)">
+      <div class="frame-inner">
+        <div class="frame-front">
+          <div class="frame-tap-hint">tap to reveal</div>
+          <div class="frame-icon">🎉</div>
+          <div class="frame-caption">Celebrations big and small, always together</div>
+        </div>
+        <div class="frame-back">
+          <img src="photo4.jpg" alt="Memory 4">
+          <div class="back-hint">tap again to flip back</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-frame reveal" style="transition-delay:0.5s">
-      <img src="photo5.jpg" alt="Memory 5" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">The everyday beauty of a life built with you</div>
+    <div class="gallery-frame reveal" style="transition-delay:0.5s" onclick="flipCard(this)">
+      <div class="frame-inner">
+        <div class="frame-front">
+          <div class="frame-tap-hint">tap to reveal</div>
+          <div class="frame-icon">🌸</div>
+          <div class="frame-caption">The everyday beauty of a life built with you</div>
+        </div>
+        <div class="frame-back">
+          <img src="photo5.jpg" alt="Memory 5">
+          <div class="back-hint">tap again to flip back</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-frame reveal" style="transition-delay:0.6s">
-      <img src="photo6.jpg" alt="Memory 6" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-      <div class="frame-caption" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:1rem;color:white;border-radius:0 0 12px 12px;">All the chapters still to come — I can't wait</div>
+    <div class="gallery-frame reveal" style="transition-delay:0.6s" onclick="flipCard(this)">
+      <div class="frame-inner">
+        <div class="frame-front">
+          <div class="frame-tap-hint">tap to reveal</div>
+          <div class="frame-icon">✨</div>
+          <div class="frame-caption">All the chapters still to come — I can't wait</div>
+        </div>
+        <div class="frame-back">
+          <img src="photo6.jpg" alt="Memory 6">
+          <div class="back-hint">tap again to flip back</div>
+        </div>
+      </div>
     </div>
   </div>
   <p class="upload-hint">// <span>replace emojis with your own photos</span> — see instructions above</p>
@@ -1168,6 +1271,11 @@
   }
 
   loadQuestion();
+
+  // ── GALLERY FLIP ──
+  function flipCard(frame) {
+    frame.classList.toggle('flipped');
+  }
 
   // ── BANTER TICKER ──
   const banters = [
