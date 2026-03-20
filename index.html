@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday, My Love 🧪</title>
+<title>Happy Birthday, Pondatii 💗💗💗💗</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0d0d1a;
-    --bg2: #12122a;
-    --purple: #7c3aed;
-    --violet: #a855f7;
-    --pink: #ec4899;
-    --cyan: #06b6d4;
-    --green: #10b981;
-    --yellow: #f59e0b;
-    --red: #ef4444;
-    --orange: #f97316;
-    --white: #f8fafc;
-    --muted: #94a3b8;
-    --card: rgba(255,255,255,0.05);
-    --border: rgba(255,255,255,0.1);
+    --bg: #f0edfb;
+    --bg2: #e8e3f8;
+    --purple: #6d28d9;
+    --violet: #7c3aed;
+    --pink: #be185d;
+    --cyan: #0e7490;
+    --green: #047857;
+    --yellow: #b45309;
+    --red: #b91c1c;
+    --orange: #c2410c;
+    --white: #1e1333;
+    --muted: #5b5478;
+    --card: rgba(255,255,255,0.6);
+    --border: rgba(109,40,217,0.15);
   }
 
   html { scroll-behavior: smooth; }
@@ -34,15 +34,15 @@
     overflow-x: hidden;
   }
 
-  /* ── GRID BG ── */
+  /* ── BACKGROUND BLOBS ── */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background:
+      radial-gradient(ellipse at 10% 15%, rgba(167,139,250,0.25) 0%, transparent 45%),
+      radial-gradient(ellipse at 90% 80%, rgba(236,72,153,0.15) 0%, transparent 45%),
+      radial-gradient(ellipse at 60% 10%, rgba(14,116,144,0.12) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
   }
@@ -82,13 +82,13 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 70% 80%, rgba(236,72,153,0.25) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 10%, rgba(6,182,212,0.2) 0%, transparent 40%);
+      radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(190,24,93,0.14) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 10%, rgba(14,116,144,0.12) 0%, transparent 40%);
   }
 
   .terminal-bar {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.75);
     border: 1px solid var(--border);
     border-radius: 8px 8px 0 0;
     padding: 0.6rem 1rem;
@@ -99,6 +99,7 @@
     position: relative;
     z-index: 2;
     margin-bottom: 0;
+    box-shadow: 0 2px 12px rgba(109,40,217,0.1);
   }
   .dot { width: 12px; height: 12px; border-radius: 50%; }
   .dot-r { background: var(--red); }
@@ -114,7 +115,7 @@
   }
 
   .terminal-box {
-    background: rgba(13,13,26,0.9);
+    background: rgba(245,242,255,0.92);
     border: 1px solid var(--border);
     border-top: none;
     border-radius: 0 0 8px 8px;
@@ -135,7 +136,7 @@
   .t-pink   { color: var(--pink); }
   .t-yellow { color: var(--yellow); }
   .t-violet { color: var(--violet); }
-  .t-muted  { color: var(--muted); }
+  .t-muted  { color: #8b80aa; }
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
@@ -148,7 +149,7 @@
     z-index: 2;
     opacity: 0;
     animation: fadeUp 1s ease 1.2s forwards;
-    background: linear-gradient(135deg, #f8fafc 0%, #a855f7 40%, #ec4899 70%, #06b6d4 100%);
+    background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 35%, #be185d 65%, #0e7490 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -253,7 +254,7 @@
     margin-bottom: 4rem;
   }
   .stat-card {
-    background: var(--card);
+    background: rgba(255,255,255,0.65);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.2rem;
@@ -263,6 +264,8 @@
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    box-shadow: 0 2px 12px rgba(109,40,217,0.08);
+    backdrop-filter: blur(8px);
   }
   .stat-card.visible { opacity: 1; transform: translateY(0); }
   .stat-card::before {
@@ -292,12 +295,10 @@
     font-family: 'Space Mono', monospace;
     letter-spacing: 0.05em;
   }
-
-  /* ── LETTER ── */
   #letter { text-align: center; }
 
   .letter-card {
-    background: var(--card);
+    background: rgba(255,255,255,0.65);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 3rem;
@@ -306,13 +307,15 @@
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.9s ease, transform 0.9s ease;
+    box-shadow: 0 4px 24px rgba(109,40,217,0.1);
+    backdrop-filter: blur(10px);
   }
   .letter-card.visible { opacity: 1; transform: translateY(0); }
   .letter-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(236,72,153,0.08) 50%, rgba(6,182,212,0.05) 100%);
+    background: linear-gradient(135deg, rgba(109,40,217,0.05) 0%, rgba(190,24,93,0.05) 50%, rgba(14,116,144,0.03) 100%);
   }
   .letter-card::after {
     content: '';
@@ -335,7 +338,7 @@
   .letter-text {
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     line-height: 2;
-    color: rgba(248,250,252,0.9);
+    color: #2d1f5e;
     font-style: italic;
     font-family: 'Cormorant Garamond', serif;
     position: relative;
@@ -404,12 +407,12 @@
     justify-content: center;
     padding: 1.2rem;
   }
-  .gallery-frame:nth-child(1) .frame-front { background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.12)); border-color: rgba(124,58,237,0.4); }
-  .gallery-frame:nth-child(2) .frame-front { background: linear-gradient(135deg, rgba(236,72,153,0.25), rgba(249,115,22,0.12)); border-color: rgba(236,72,153,0.4); }
-  .gallery-frame:nth-child(3) .frame-front { background: linear-gradient(135deg, rgba(6,182,212,0.25), rgba(16,185,129,0.12)); border-color: rgba(6,182,212,0.4); }
-  .gallery-frame:nth-child(4) .frame-front { background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(6,182,212,0.12)); border-color: rgba(16,185,129,0.4); }
-  .gallery-frame:nth-child(5) .frame-front { background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(239,68,68,0.12)); border-color: rgba(245,158,11,0.4); }
-  .gallery-frame:nth-child(6) .frame-front { background: linear-gradient(135deg, rgba(168,85,247,0.25), rgba(236,72,153,0.12)); border-color: rgba(168,85,247,0.4); }
+  .gallery-frame:nth-child(1) .frame-front { background: linear-gradient(135deg, rgba(109,40,217,0.18), rgba(124,58,237,0.08)); border-color: rgba(109,40,217,0.25); }
+  .gallery-frame:nth-child(2) .frame-front { background: linear-gradient(135deg, rgba(190,24,93,0.18), rgba(234,88,12,0.08)); border-color: rgba(190,24,93,0.25); }
+  .gallery-frame:nth-child(3) .frame-front { background: linear-gradient(135deg, rgba(14,116,144,0.18), rgba(4,120,87,0.08)); border-color: rgba(14,116,144,0.25); }
+  .gallery-frame:nth-child(4) .frame-front { background: linear-gradient(135deg, rgba(4,120,87,0.18), rgba(14,116,144,0.08)); border-color: rgba(4,120,87,0.25); }
+  .gallery-frame:nth-child(5) .frame-front { background: linear-gradient(135deg, rgba(180,83,9,0.18), rgba(185,28,28,0.08)); border-color: rgba(180,83,9,0.25); }
+  .gallery-frame:nth-child(6) .frame-front { background: linear-gradient(135deg, rgba(109,40,217,0.18), rgba(190,24,93,0.08)); border-color: rgba(109,40,217,0.25); }
 
   .frame-tap-hint {
     font-family: 'Space Mono', monospace;
@@ -421,13 +424,12 @@
   }
   .frame-icon { font-size: 2rem; margin-bottom: 0.8rem; }
   .frame-caption {
-    font-size: 0.85rem;
-    color: rgba(248,250,252,0.9);
     text-align: center;
     line-height: 1.6;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 1rem;
+    color: #2d1f5e;
   }
 
   /* BACK — photo */
@@ -482,8 +484,8 @@
   .bug-table.visible { opacity: 1; transform: translateY(0); }
 
   .bug-table th {
-    background: rgba(124,58,237,0.2);
-    border: 1px solid rgba(124,58,237,0.3);
+    background: rgba(109,40,217,0.12);
+    border: 1px solid rgba(109,40,217,0.2);
     padding: 0.8rem 1rem;
     color: var(--violet);
     text-align: left;
@@ -491,14 +493,15 @@
     font-size: 0.7rem;
   }
   .bug-table td {
-    border: 1px solid var(--border);
+    border: 1px solid rgba(109,40,217,0.1);
     padding: 0.8rem 1rem;
-    color: var(--white);
+    color: #2d1f5e;
+    background: rgba(255,255,255,0.45);
     vertical-align: top;
     line-height: 1.6;
   }
-  .bug-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-  .bug-table tr:hover td { background: rgba(124,58,237,0.07); }
+  .bug-table tr:nth-child(even) td { background: rgba(255,255,255,0.25); }
+  .bug-table tr:hover td { background: rgba(109,40,217,0.07); }
 
   .tag {
     display: inline-block;
@@ -520,7 +523,7 @@
   .quiz-wrap { max-width: 620px; margin: 0 auto; }
 
   .quiz-card {
-    background: var(--card);
+    background: rgba(255,255,255,0.6);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 2.5rem;
@@ -529,6 +532,8 @@
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
+    box-shadow: 0 4px 24px rgba(109,40,217,0.1);
+    backdrop-filter: blur(10px);
   }
   .quiz-card::after {
     content: '';
@@ -549,7 +554,7 @@
 
   .quiz-progress-bar {
     height: 4px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(109,40,217,0.15);
     border-radius: 2px;
     margin-bottom: 1.8rem;
     overflow: hidden;
@@ -565,7 +570,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.45rem;
     font-style: italic;
-    color: var(--white);
+    color: #2d1f5e;
     margin-bottom: 1.8rem;
     line-height: 1.5;
     text-align: left;
@@ -575,9 +580,9 @@
 
   .quiz-btn {
     padding: 0.85rem 1.2rem;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.03);
-    color: var(--white);
+    border: 1px solid rgba(109,40,217,0.2);
+    background: rgba(255,255,255,0.55);
+    color: #2d1f5e;
     font-family: 'Quicksand', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
@@ -589,31 +594,29 @@
     align-items: center;
     gap: 0.8rem;
   }
-  .quiz-btn:hover { border-color: var(--violet); background: rgba(124,58,237,0.1); transform: translateX(4px); }
+  .quiz-btn:hover { border-color: var(--violet); background: rgba(109,40,217,0.1); transform: translateX(4px); }
   .quiz-btn .opt-label {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem;
     color: var(--muted);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(109,40,217,0.2);
     border-radius: 4px;
     padding: 0.1rem 0.4rem;
     min-width: 24px;
     text-align: center;
   }
-  .quiz-btn.correct { background: rgba(16,185,129,0.15); border-color: var(--green); color: var(--green); }
+  .quiz-btn.correct { background: rgba(4,120,87,0.12); border-color: var(--green); color: var(--green); }
   .quiz-btn.correct .opt-label { border-color: var(--green); color: var(--green); }
-  .quiz-btn.wrong   { background: rgba(239,68,68,0.12); border-color: var(--red);   color: rgba(248,250,252,0.5); }
+  .quiz-btn.wrong   { background: rgba(185,28,28,0.08); border-color: var(--red); color: rgba(45,31,94,0.4); }
 
   .quiz-feedback {
     margin-top: 1rem;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--cyan);
     min-height: 1.4rem;
     text-align: left;
     font-family: 'Space Mono', monospace;
     font-size: 0.8rem;
     line-height: 1.6;
+    color: var(--cyan);
   }
 
   .quiz-next {
@@ -653,7 +656,7 @@
     color: var(--cyan);
     margin: 0.5rem 0 1rem;
   }
-  .quiz-result-msg { font-size: 1rem; line-height: 1.8; color: rgba(248,250,252,0.8); }
+  .quiz-result-msg { font-size: 1rem; line-height: 1.8; color: #3b2d6b; }
   .restart-btn {
     margin-top: 1.5rem;
     padding: 0.7rem 1.8rem;
@@ -693,7 +696,7 @@
     padding: 5rem 2rem;
     position: relative;
     z-index: 1;
-    background: linear-gradient(to top, rgba(124,58,237,0.1), transparent);
+    background: linear-gradient(to top, rgba(109,40,217,0.1), transparent);
   }
   .footer-heart {
     font-size: 2.5rem;
@@ -730,7 +733,7 @@
     overflow: hidden;
     border: 1px solid var(--border);
     border-radius: 8px;
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.4);
     padding: 0.8rem 0;
     position: relative;
   }
@@ -742,8 +745,8 @@
     z-index: 2;
     pointer-events: none;
   }
-  .banter-scroll::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-  .banter-scroll::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+  .banter-scroll::before { left: 0; background: linear-gradient(90deg, #f0edfb, transparent); }
+  .banter-scroll::after  { right: 0; background: linear-gradient(-90deg, #f0edfb, transparent); }
   .banter-track {
     display: flex;
     gap: 2rem;
@@ -779,21 +782,23 @@
     margin-top: 2rem;
   }
   .thirty-card {
-    background: var(--card);
+    background: rgba(255,255,255,0.6);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.5rem 1rem;
     font-family: 'Space Mono', monospace;
     font-size: 0.78rem;
     line-height: 1.7;
-    color: var(--muted);
+    color: #5b5478;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
     text-align: left;
+    box-shadow: 0 2px 12px rgba(109,40,217,0.07);
+    backdrop-filter: blur(8px);
   }
   .thirty-card.visible { opacity: 1; transform: translateY(0); }
-  .thirty-card .tc-title { color: var(--white); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8rem; }
+  .thirty-card .tc-title { color: #2d1f5e; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8rem; }
   .thirty-card .tc-emoji { font-size: 1.4rem; margin-bottom: 0.5rem; display: block; }
   .thirty-card .tc-tag { display: inline-block; margin-top: 0.6rem; }
 
@@ -940,11 +945,8 @@
     <div class="letter-tag">/* written with love, zero bugs, 30 candles */</div>
     <p class="letter-text">
       My darling,<br><br>
-      You are now officially 30. Thirty! Three decades. 10,950 days. And somehow, <em>still</em> the most beautiful person I have ever seen. I suspect you've found a bug in the ageing algorithm and quietly reported it — Fixed: Won't Apply To Her.<br><br>
-      You are the most thorough person I know — in your work, and in the way you love. You find what others miss, you fix what others ignore, and you make everything around you better just by being there.<br><br>
-      Yes, you're 30 now. The good news? Wine gets better with age. So do you. The bad news? I'm legally required to remind you of this every single year from now on.<br><br>
-      Today is yours. Every candle (all 30 of them — please don't set off the fire alarm), every smile, every quiet moment of joy — all of it belongs to you. You deserve a thousand celebrations, and this is just the beginning.<br><br>
-      I love you more than words can hold — and more than the number of bugs you've ever filed (which is saying a lot).
+      You are now officially 30. Thirty! Three decades. 10,950 days. And somehow, <em>still</em> the most beautiful person I have ever seen. Wine gets better with age. So do you. Naanum than ..The bad news? I'm legally required to remind you of this every single year from now on.<br><br>
+      I love you more than words can hold — and more than the number of bugs you've ever reported.
     </p>
     <p class="letter-sign">— Forever yours ♡</p>
   </div>
@@ -1005,7 +1007,7 @@
           <div class="frame-caption">Celebrations big and small, always together</div>
         </div>
         <div class="frame-back">
-          <img src="photo4.jpg" alt="Memory 4">
+          <img src="photo4.jpg" alt="Memory 4" style="object-fit:contain; object-position:center center; background:#000;">
           <div class="back-hint">tap again to flip back</div>
         </div>
       </div>
@@ -1037,7 +1039,6 @@
       </div>
     </div>
   </div>
-  <p class="upload-hint">// <span>replace emojis with your own photos</span> — see instructions above</p>
 </section>
 
 <div class="sep"><div class="sep-line"><div class="sep-rule"></div><div class="sep-icon">// bug-report.json</div><div class="sep-rule"></div></div></div>
@@ -1116,7 +1117,7 @@
 <!-- ═══ QUIZ ═══ -->
 <section id="quiz">
   <span class="section-label">user acceptance testing</span>
-  <h2 class="section-title" style="color:var(--violet);">Know Your Tester Quiz</h2>
+  <h2 class="section-title" style="color:var(--violet);">Let's test your Knowledge About Me !!</h2>
   <div class="color-rule" style="margin: 0 auto 2.5rem;"></div>
   <div class="quiz-wrap">
     <div class="quiz-card reveal" id="quiz-card">
@@ -1180,34 +1181,34 @@
   // ── QUIZ ──
   const questions = [
     {
-      q: "A new build arrives on Friday at 5 PM. What does she do?",
-      opts: ["Leave it for Monday", "Test it immediately — bugs don't respect weekends", "Ask if it can wait", "File a complaint about release timing"],
+      q: "Where was our first Kiss happened??",
+      opts: ["SiruSeri", "National Highways", "Thiruvanmiyur", "None of the Above"],
+      answer: 0,
+      feedback: ["// PASS ✓ Super ngaaa", "// FAIL: Anga neraiya nadanthuchu but not first Kiss", "// FAIL: Inga enna aachunu unkae therium", "// FAIL: Worst behaviour nga"]
+    },
+    {
+      q: "What is my Bike Number??",
+      opts: ["9987", "9978", "9897", "9798"],
       answer: 1,
-      feedback: ["// FAIL: She's too dedicated for that!", "// PASS ✓ Correct! She's always on the case. ♡", "// FAIL: Not her style at all!", "// FAIL: She'd just open her laptop and start testing."]
+      feedback: ["// FAIL: Innuma Bike Number therila .", "// PASS ✓ Sabash Mapla!! Sabash!!", "// FAIL: Thum Pagal ey??", "// FAIL: Utter Waste.."]
     },
     {
-      q: "She finds a critical bug right before launch. Her reaction?",
-      opts: ["Quietly close the laptop", "Stay calm, document it perfectly, and escalate", "Panic and blame everyone", "Ship it and hope for the best"],
+      q: "What is my official Birthday Month??",
+      opts: ["June", "July", "August", "None of the Above"],
       answer: 1,
-      feedback: ["// FAIL: That's not the way of the tester.", "// PASS ✓ Grace under pressure — that's her! ♡", "// FAIL: She's the calm in every storm.", "// FAIL: Not on her watch!"]
+      feedback: ["// FAIL: Nahi Beta", "// PASS ✓ Vaaraey vaa!! ", "// FAIL : Innuoru time try panringala ??", "// FAIL : Mmkummm mudinchi po"]
     },
     {
-      q: "What's her superpower outside of testing?",
-      opts: ["Finding the one dirty dish someone left", "Making every room feel warmer just by walking in", "Remembering every film plot perfectly", "All of the above"],
+      q: "What was the first place we went out together?",
+      opts: ["Temple", "Beach", "Marina Mall", "Sathyam Cinemas"],
       answer: 3,
-      feedback: ["// PARTIAL: True, but incomplete!", "// PARTIAL: Beautiful, but she does more!", "// PARTIAL: Her memory is legendary though!", "// PASS ✓ All of the above — she's extraordinary. ♡"]
+      feedback: ["// FAIL: Nyayama ithu??", "// FAIL: You are wrong .totally wrong..", "// FAIL: Phewww..", "// PASS ✓ Nice Memory.."]
     },
     {
-      q: "How does she take her coffee?",
-      opts: ["Black, like her bug reports", "Sweet, like her personality", "However it comes — she's easy-going", "She doesn't drink coffee, she runs on determination"],
-      answer: 3,
-      feedback: ["// FAIL: Too harsh for someone so warm.", "// PARTIAL: She is sweet! But she doesn't need coffee.", "// FAIL: She's picky in the best way.", "// PASS ✓ Pure determination and love. ♡"]
-    },
-    {
-      q: "What does she deserve on her birthday?",
-      opts: ["A bug-free day", "Absolutely everything", "Zero responsibilities and 100% celebration", "All of the above — obviously"],
-      answer: 3,
-      feedback: ["// PARTIAL: A start!", "// PARTIAL: Yes, but more specifically...", "// PARTIAL: Getting closer!", "// PASS ✓ All of the above. She deserves the world! ♡"]
+      q: "What is my college Name??",
+      opts: ["GCT", "CGT", "GCE", "CEG"],
+      answer: 0,
+      feedback: ["// PASS ✓ Mass a da nee!!", "// FAIL: Ipdi oru college ey ila !!", "// FAIL: Naa padichathu coimbatore ngo!", "// FAIL: Ithu enga irukunu theriyuma unaku ??"]
     }
   ];
 
@@ -1253,12 +1254,12 @@
     document.getElementById('quiz-result').style.display = 'block';
     document.getElementById('quiz-score-display').textContent = `${score} / ${questions.length}`;
     const msgs = [
-      "// FAIL — But love makes up for everything! ♡",
-      "// 1 PASS — You're learning her. Keep going.",
-      "// 2 PASS — Getting warmer. She's worth knowing deeply.",
-      "// 3 PASS — You know her well. She's lucky too.",
-      "// 4 PASS — Almost perfect! You pay close attention.",
-      "// ALL PASS ✓ You know her heart inside out. ♡"
+      "// FAIL — Onnu Koodava correct ah sollala..",
+      "// 1 PASS — Heavily disappointed",
+      "// 2 PASS — Polachu po",
+      "// 3 PASS — Parvala..thappichita",
+      "// 4 PASS — Awesome awesome....",
+      "// ALL PASS ✓ You know me inside out. ♡"
     ];
     document.getElementById('quiz-result-msg').textContent = msgs[score];
   }
